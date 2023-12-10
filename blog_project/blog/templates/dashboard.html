@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+            background: #f4f4f4; /* Light gray background */
+        }
+    
+        .header {
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+            background: #3498db; /* Blue */
+            color: #fff; /* White text */
+        }
+    
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+    
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+    
+        .navbar a:hover {
+            background-color: #555; /* Darker gray on hover */
+            color: #fff;
+        }
+    
+        .navbar input[type=text] {
+            float: right;
+            padding: 6px;
+            margin-top: 8px;
+            margin-right: 16px;
+            border: none;
+            font-size: 17px;
+            background-color: #f4f4f4; /* Light gray input background */
+            color: #333; /* Dark gray text */
+        }
+    
+        .dashboard {
+            background-color: #fff; /* White */
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+            border-radius: 5px;
+        }
+    
+        .dashboard form {
+            margin-bottom: 20px;
+        }
+    
+        .dashboard form input,
+        .dashboard form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+    
+        .dashboard .post {
+            background-color: #f9f9f9; /* Lighter gray */
+            padding: 20px;
+            margin-top: 10px;
+            border: 1px solid #ddd; /* Light gray border */
+            border-radius: 5px;
+        }
+    
+        .dashboard .post h3 {
+            color: #333; /* Dark gray text */
+        }
+        .blog-post {
+        background-color: #fff; /* White background */
+        padding: 20px;
+        margin-top: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+        border-radius: 5px;
+    }
+
+    .blog-post h3 {
+        color: #333; /* Dark gray text */
+    }
+
+    .blog-post p {
+        color: #555; /* Medium gray text */
+        margin-bottom: 10px;
+    }
+
+    .blog-post a {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #3498db; /* Blue */
+        color: #fff; /* White text */
+        text-decoration: none;
+        border-radius: 4px;
+        margin-right: 10px;
+        transition: background-color 0.3s;
+    }
+
+    .blog-post a:hover {
+        background-color: #2980b9; /* Darker blue on hover */
+    }
+    
+        @media screen and (max-width: 800px) {
+            .navbar input[type=text] {
+                float: none;
+                margin-right: 0;
+                text-align: center;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+
+<div class="header">
+    <h2>{{ user.username }}'s Dashboard</h2>
+</div>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="{% url 'create_post' %}">Create Post</a>
+    <a href="{% url 'logout' %}">Logout</a>
+  </div>
+  
+
+  <div class="dashboard">
+    {% block content %}
+    <h2>Welcome, {{ user.username }} | {{ user.email }}</h2>
+    {% for post in posts %}
+        <div class="blog-post">
+            <h3>{{ forloop.counter }}. {{ post.title }}</h3>
+            <img src="{{ post.image.url }}" alt="Post Image" style="height: 30vh;">
+            <p>{{ post.content }}</p>
+            {% if post.updated_at != post.created_at %}
+                <h5>Updated at: {{ post.updated_at }}</h5>
+            {% else %}
+                <h5>Created at: {{ post.created_at }}</h5>
+            {% endif %}
+            <a href="{% url 'edit_post' post.id %}">Edit</a>
+            <a href="{% url 'delete_post' post.id %}">Delete</a>
+        </div>
+    {% endfor %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!-- search_results.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Search Results for "{{ query }}"</h2>
+
+  {% if results %}
+    <div class="leftcolumn">
+      {% for post in results %}
+        <div class="small-card">
+          <h2>{{ post.title }}</h2>
+          {% if post.updated_at != post.created_at %}
+            <h5>Updated at: {{ post.updated_at }}</h5>
+          {% else %}
+            <h5>Created at: {{ post.created_at }}</h5>
+          {% endif %}
+          <div class="fakeimg">
+            <img src="{{ post.image.url }}" alt="Image" style="height: 60vh; width: 100%;">
+          </div>
+          <p>{{ post.content|truncatewords:50 }}</p>
+          <a href="{% url 'read_more' post.id %}" class="read-more-btn">Read More</a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No results found.</p>
+  {% endif %}
+{% endblock %}

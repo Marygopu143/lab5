@@ -1,0 +1,11 @@
+<!-- create_post.html and edit_post.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{% if post %}Edit{% else %}Create{% endif %} Post</h2>
+  <form method="post" action="" enctype="multipart/form-data">  <!-- Add enctype for file upload -->
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+{% endblock %}

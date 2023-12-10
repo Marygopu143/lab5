@@ -1,0 +1,182 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  background: #3498db; /* Blue */
+  color: #fff; /* White text */
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.navbar .search input[type=text] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+  width: 150px; /* Adjust the width */
+}
+
+.leftcolumn {
+  float: left;
+  width: 75%;
+}
+
+.rightcolumn {
+  float: left;
+  width: 25%;
+  padding-left: 20px;
+}
+
+.fakeimg {
+  background-color: #ddd; /* Light gray */
+  width: 100%;
+  padding: 20px;
+}
+
+.card {
+  background-color: #fff; /* White */
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #3498db; /* Blue */
+  color: #fff; /* White text */
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn,
+  .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+
+  .navbar input[type=text] {
+    float: none;
+    margin-right: 0;
+    text-align: center;
+    width: 100%; /* Full width on small screens */
+  }
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4caf50; /* Green */
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+/* Additional styles for responsiveness */
+
+@media screen and (max-width: 600px) {
+  form {
+    width: 80%;
+  }
+}
+
+.read-more-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #e74c3c; /* Red */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.read-more-btn:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Add these styles to your existing CSS file */
+
+.social-media-buttons {
+  margin-top: 20px;
+}
+
+.social-media-btn {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 8px 16px;
+  background-color: #3498db; /* Blue */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.social-media-btn:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}
+
+.comments-section {
+  margin-top: 20px;
+}
+
